@@ -7,12 +7,16 @@ const filters = {
 renderedNotes(notes, filters)
 
 document.querySelector('#create-note').addEventListener('click', function (e){
+    const id = uuidv4()
     notes.push({
+        id: id,
         title: '',
         body: ''
     })
     saveNotes(notes)
-    renderedNotes(notes, filters)
+    
+    // send user to edit page after they click create note
+    location.assign(`/edit.html#${id}`)
 })
 
 document.querySelector('#search-text').addEventListener('input', function (e){
